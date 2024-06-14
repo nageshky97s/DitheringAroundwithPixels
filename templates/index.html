@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Retrofy - Transform to Pixel Art </title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="../assets/index.css" /> 
+      <script type="text/javascript" src="../assets/pixel.js"></script>
+      <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        
+      }
+      </style>
+       
+</head>
+<body>
+
+<h1 style="text-align:center;">RETROFY</h1>
+
+<div id="splitleft">
+    <h4 style="display:inline;">Upload Image</h4>
+    <br>
+    <!-- <form  method="post" action="/"
+    enctype="multipart/form-data">   -->
+        <label style="color: white;">
+        <input type="file" name="file" accept=".jpg, .jpeg, .png" onchange="displayUploaded(event)" /> 
+        </label>
+    <!-- </form> -->
+    <br>
+
+
+
+<div class="slidecontainer">
+  <h4 style="display:inline;" >Blockiness</h4>
+  <input id="BlockinessSlider" type="range" min="0" max="16" step="1" value="1">
+  <h4 id="Blockinessno" style="display: inline;"></h4>
+  <input type="checkbox" id="grayscale" name="gray" value="grayscale">
+  <label style="color: white;" for="grayscale"> Grayscale</label>
+  
+</div>
+
+<br>
+
+<h4 style="display:inline;">Dithering Style</h4>
+<select name="dither" id="dither" value="Select">
+  <option value="Select">Select</option>
+  <option value="Floyd-Steinberg">Floyd-Steinberg</option>
+  <option value="Bayer">Bayer</option>
+  <option value="Stucki">Stucki</option>
+
+</select>
+<br><br>
+
+
+<div class="CustomPalette" id="divcustompal">
+    
+    
+     <h3 style="display:inline;">CUSTOM PALETTES</h3>
+     <input type="checkbox" id="cuspalcheck" name="cuspalcheck" value="cuspalcheck" onclick="hideDivsCustom()">
+     <br><br>
+     <div id="hidedivcus" style="display: none;">
+          <h4 style="display:inline;">Popular and Custom palettes :</h4>
+
+          <select name="palette" id="palette" onchange="paletteDisplay()" value="">
+            <option  value="">Select</option>
+            <option id="NESWiki" value="NESWiki">Nintendo</option>
+            <option id="Gameboy" value="Gameboy">Gameboy</option>
+            <option id="Atari2600" value="Atari2600">Atari-2600</option>
+
+            <option id="Apollo" value="Apollo">Apollo</option>
+            <option id="Frosty" value="Frosty">Frosty</option>
+            <option id="MidnightAblaze" value="MidnightAblaze">Midnight Ablaze</option>
+            <option id="Oil" value="Oil">Oil</option>
+            <option id="Vapor" value="Vapor">Vapor</option>
+            <option id="YellowDays" value="YellowDays">YellowDays</option>
+            
+          </select>
+          <h5 style="color:white">CLICK ON COLOR TO ADD TO YOUR CUSTOM PALETTE AND NAME YOUR PALETTE </h5>
+      
+          <h4 style="display:inline;">Select color: </h4>
+          <input type="color" id="cuscolor" name="cuscolor" value="#ff0000">
+          <button type="button" onclick="addColor()">Add Color</button>
+          <input type="text" id="palettename" name="palettename" style="width:95px;">
+          <button type="button" onclick="addPalette()">Add Palette</button>
+          <br><br>
+      
+          <div id="addedPalette">
+          </div>
+
+
+     </div>
+
+
+    
+
+
+</div>
+<br>
+
+
+
+
+<h3 style="display:inline;">COLOR REDUCTION</h3>
+<input type="checkbox" id="redcolcheck" name="redcolcheck" value="redcolcheck" onclick="hideDivsReduce()">
+     <br><br>
+     <!-- <h4>Pro Tip:Do not select Dithering Style if you want to change the palette as it will drastically reduce the no of colors</h4> -->
+     <div id="hidedivred" style="display: none;">
+      <h4 style="display:inline;">Reduce No. of Colors to : </h4>
+      <input type="number" id="redcol" name="redcol" min="2" max="128" step="1">
+      <!-- <button type="button">Reduce</button> -->
+      <br><br>
+      <h4 style="display: inline;">COLOR REDUCTION</h4>
+      <br><br>
+
+      <div  id="replaceSVGdiv" >
+        
+      </div>
+
+
+      <h5 style="color:white">Select the above color and replace it by selecting  below </h5>
+      <input type="color" id="replacecol" name="replacecol" value="#ff0000">
+      <button type="button" onclick="replacePalette()">Replace Color</button>
+      <br><br>
+     </div>
+
+<button type="button" id="generate" onclick="sendData()">Generate/Regenerate Image</button>
+
+<a id="downloadaimage">
+  <button type="button" id="download" onclick="downloadData()">Download Image</button>
+
+</a>
+
+
+
+</div>
+
+<div id="splitright">
+  <div id="centered">
+    
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

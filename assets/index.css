@@ -1,0 +1,40 @@
+body {
+    background-color: black;
+  }
+  
+  h1 {
+    color: white;
+   
+  }  
+  p {
+    color: white;
+  }
+
+  h4,h3{
+    color: white;
+  }
+
+  /* h3{
+    color: white;
+  } */
+
+
+  #splitleft {
+    position: relative;
+    float: left;
+    width: 25%;  
+    height: 100%;  
+  }
+  
+  #splitright {
+    position: relative;
+    float: left;
+    width: 75%;  
+    height: 100%; 
+  }
+
+  #centered {
+    position: relative;  
+    left : 25%
+  }
+  
