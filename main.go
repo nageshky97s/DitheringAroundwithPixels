@@ -12,6 +12,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"text/template"
@@ -32,13 +33,18 @@ func init() {
 
 func main() {
 
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("defaulting to port %s", port)
+	}
 	colorpalettes = make(map[string][][]int)
 	distance = algos.Caldiscolor()
 	algos.ReadPalette(colorpalettes)
 	fs := http.FileServer(http.Dir("assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
 	http.HandleFunc("/", handleFunc)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":"+port, nil)
 
 }
 
