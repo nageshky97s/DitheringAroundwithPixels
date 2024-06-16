@@ -130,8 +130,8 @@ func MedianCut(pixels [][][]int, noOfColors int, distance [][]int) ([][]int, [][
 		}
 	}
 	totalColors := len(uniquecolors)
-	fmt.Println(totalColors)
-	fmt.Println(noOfColors)
+	// fmt.Println(totalColors)
+	// fmt.Println(noOfColors)
 	if noOfColors > totalColors {
 		fmt.Println("The No. of Colors Entered is more than the available colors in the palette")
 		return nil, nil
